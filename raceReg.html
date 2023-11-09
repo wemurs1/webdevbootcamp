@@ -8,35 +8,38 @@
   <body>
     <h1>Race Registration!</h1>
     <form action="register">
-      <label for="firstName">First Name</label>
-      <input type="text" name="firstName" id="firstName" required />
-      <label for="lastName">Last Name</label>
-      <input type="text" name="lastName" id="lastName" required />
+      <div>
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" required />
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" required />
+      </div>
       <p>Select a Race:</p>
-      <p>
-        <input type="radio" name="race" id="5k" value="5k" /><label for="5k"
+      <div>
+        <input type="radio" name="race" id="fivek" value="fivek" /><label
+          for="fivek"
           >Fun Run 5K</label
         >
-      </p>
-      <p>
+      </div>
+      <div>
         <input type="radio" name="race" id="half" value="half" /><label
           for="half"
           >Half Marathon</label
         >
-      </p>
-      <p>
+      </div>
+      <div>
         <input type="radio" name="race" id="full" value="full" /><label
           for="full"
           >Full Marathon</label
         >
-      </p>
-      <p>
+      </div>
+      <div>
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" required />
+        <input type="email" name="email" id="email" required />
         <label for="password">Password</label>
         <input type="password" name="password" id="password" required />
-      </p>
-      <p>
+      </div>
+      <div>
         <label for="ageGroup">Select Age Group</label>
         <select name="ageGroup" id="ageGroup">
           <option value="under18">under 18</option>
@@ -44,7 +47,7 @@
           <option value="3050">30 - 50</option>
           <option value="50plus">over 50</option>
         </select>
-      </p>
+      </div>
       <button>Register!</button>
     </form>
   </body>
