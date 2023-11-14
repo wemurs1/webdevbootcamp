@@ -1,0 +1,18 @@
+section {
+  width: 80%;
+  height: 800px;
+  /* background-image: url('https://unsplash.com/photos/the-sun-shines-through-the-water-in-a-cave-wEgMlQ8DL6s?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash'); */
+  /* background-image: url('https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1227&q=80');
+  background-size: cover; */
+  /* background-position: bottom; */
+  /* background: center/40% no-repeat url('https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1227&q=80'),
+    blueviolet ; */
+  background: center/cover
+    url('https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1227&q=80');
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 100px;
+  color: white;
+}
