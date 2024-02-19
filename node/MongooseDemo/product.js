@@ -27,6 +27,10 @@ const productSchema = new mongoose.Schema({
   },
 });
 
+productSchema.methods.greet = function () {
+  console.log('Hi');
+};
+
 const Product = mongoose.model('Product', productSchema);
 
 const bike = new Product({
