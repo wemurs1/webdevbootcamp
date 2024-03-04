@@ -1,0 +1,1 @@
+docker run -d -p 27017:27017 -v mongoData:/data/db --name example-mongo mongo:latest
