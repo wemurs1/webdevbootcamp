@@ -10,7 +10,7 @@ const catchAsyc = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const Campground = require('./models/campground');
 const Review = require('./models/review');
-const { campgroundSchema } = require('./schemas');
+const { campgroundSchema, reviewSchema } = require('./schemas');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp');
 
@@ -30,6 +30,16 @@ app.use(methodOverride('_method'));
 
 const validateCampground = (req, res, next) => {
   const { error } = campgroundSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(',');
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
   if (error) {
     const msg = error.details.map((el) => el.message).join(',');
     throw new ExpressError(msg, 400);
@@ -68,7 +78,7 @@ app.get(
   '/campgrounds/:id',
   catchAsyc(async (req, res) => {
     const { id } = req.params;
-    const campground = await Campground.findById(id);
+    const campground = await Campground.findById(id).populate('reviews');
     res.render('campgrounds/show', { campground });
   })
 );
@@ -105,6 +115,7 @@ app.delete(
 
 app.post(
   '/campgrounds/:id/reviews',
+  validateReview,
   catchAsyc(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
@@ -112,6 +123,19 @@ app.post(
     campground.reviews.push(review);
     review.save();
     campground.save();
+    res.redirect(`/campgrounds/${id}`);
+  })
+);
+
+app.delete(
+  '/campgrounds/:id/reviews/:reviewid',
+  catchAsyc(async (req, res) => {
+    const { id, reviewid } = req.params;
+    await Campground.findByIdAndUpdate(id, {
+      $pull: { reviews: reviewid },
+    });
+    await Review.findByIdAndDelete(reviewid);
+    res.redirect(`/campgrounds/${id}`);
   })
 );
 
