@@ -2,7 +2,13 @@ const express = require('express');
 const app = express();
 const session = require('express-session');
 
-app.use(session({ secret: 'thisisnotagoodsecret' }));
+sessionOptions = {
+  secret: 'thisisnotagoodsecret',
+  resave: false,
+  saveUninitialized: false,
+};
+
+app.use(session(sessionOptions));
 
 app.get('/viewcount', (req, res) => {
   if (req.session.count) {
