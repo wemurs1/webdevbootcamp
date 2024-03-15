@@ -18,5 +18,8 @@ const login = async (pw, hashedPw) => {
   }
 };
 
-const hash = Promise.resolve(hashPassword('monkey'));
-login('monkey', '$2b$12$P9.tUoDzX9S9zCAs43YCeeybnkPQQlGy2y7QC/8gP/iI11MjzjfPS');
+const execute = async () => {
+  const hash = await hashPassword('monkey');
+  login('monkey', hash); // '$2b$12$P9.tUoDzX9S9zCAs43YCeeybnkPQQlGy2y7QC/8gP/iI11MjzjfPS');
+};
+execute();
