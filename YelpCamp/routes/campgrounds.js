@@ -14,11 +14,6 @@ router.get('/new', isLoggedIn, campgrounds.renderNewForm);
 router
   .route('/')
   .get(catchAsyc(campgrounds.index))
-  // .post(
-  //   isLoggedIn,
-  //   validateCampground,
-  //   catchAsyc(campgrounds.createCampground)
-  // );
   .post(upload.array('image'), (req, res) => {
     console.log(req.body);
     console.log(req.files);
