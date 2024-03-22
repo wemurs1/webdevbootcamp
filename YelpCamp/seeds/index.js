@@ -22,7 +22,24 @@ const seedDb = async () => {
       author: '65f98f982d0d65998093d935',
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
-      image: 'https://source.unsplash.com/collection/483251',
+      images: [
+        {
+          url: 'https://res.cloudinary.com/djddfrgoq/image/upload/v1711109983/YelpCamp/xf1ysfpmyu1ka0tgiw0o.jpg',
+          filename: 'YelpCamp/xf1ysfpmyu1ka0tgiw0o',
+        },
+        {
+          url: 'https://res.cloudinary.com/djddfrgoq/image/upload/v1711109993/YelpCamp/zezzc7odpack7a8sgshd.jpg',
+          filename: 'YelpCamp/zezzc7odpack7a8sgshd',
+        },
+        {
+          url: 'https://res.cloudinary.com/djddfrgoq/image/upload/v1711110004/YelpCamp/ync9nad1129elxrkt7mo.jpg',
+          filename: 'YelpCamp/ync9nad1129elxrkt7mo',
+        },
+        {
+          url: 'https://res.cloudinary.com/djddfrgoq/image/upload/v1711110012/YelpCamp/sx622l08opx8u1vhukhk.jpg',
+          filename: 'YelpCamp/sx622l08opx8u1vhukhk',
+        },
+      ],
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur voluptas rerum quo dolorum asperiores. Soluta saepe expedita ipsum accusamus necessitatibus sapiente repellendus tenetur dicta, iure, id quos. Fuga, officiis fugiat? aspernatur consequatur amet est maiores enim officiis expedita reiciendis, animi porro itaque officia repudiandae suscipit possimus id libero a alias atque sed! Officiis rerum earum consequuntur cumque magni doloremque?',
       price: price,
