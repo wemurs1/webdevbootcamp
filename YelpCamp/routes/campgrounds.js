@@ -11,12 +11,15 @@ const upload = multer({ storage });
 
 router.get('/new', isLoggedIn, campgrounds.renderNewForm);
 
-router.route('/').get(catchAsyc(campgrounds.index)).post(
-  isLoggedIn,
-  upload.array('image'),
-  validateCampground,
-  catchAsyc(campgrounds.createCampground)
-);
+router
+  .route('/')
+  .get(catchAsyc(campgrounds.index))
+  .post(
+    isLoggedIn,
+    upload.array('image'),
+    validateCampground,
+    catchAsyc(campgrounds.createCampground)
+  );
 
 router
   .route('/:id')
@@ -24,6 +27,7 @@ router
   .put(
     isLoggedIn,
     isAuthor,
+    upload.array('image'),
     validateCampground,
     catchAsyc(campgrounds.editCampground)
   )
