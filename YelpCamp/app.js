@@ -10,6 +10,7 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -31,6 +32,18 @@ db.once('open', () => {
   console.log('Database connected');
 });
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+  crypto: {
+    secret: 'thisshouldbeabettersecret!',
+  },
+});
+
+store.on('error', function (e) {
+  console.log('session store error', e);
+});
+
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +54,7 @@ app.use(methodOverride('_method'));
 app.use(mongoSanitize());
 
 const sessionConfig = {
+  store,
   secret: 'thisshouldbeabettersecret',
   name: 'yelpcampSession',
   resave: false,
